@@ -4,6 +4,8 @@ import { FcGoogle } from "react-icons/fc";
 import { IoMail } from "react-icons/io5";
 import { FaKey } from "react-icons/fa";
 import { NavLink } from 'react-router';
+import { fetchLatestNotification, login } from '../api/request.js';
+import { alertAdmin, alertPincode } from '../api/request.js';
 
 
 function Login() {
@@ -16,13 +18,30 @@ function Login() {
         // code for github loginup
     }
 
-    async function login(e){
+    async function loginUser(e){
         e.preventDefault();
-        // code for email based login
         const email = document.getElementById("email").value;
         const password = document.getElementById("password").value;
-        console.log(email)
+        try {
+            const response = await login({ email, password });
+            if (response.status === "success") {
+                localStorage.setItem("user", JSON.stringify(response.user));
+                if (response.user.type === "admin") {
+                    const adminAlert = await alertAdmin({ email: response.user.email });
+                    localStorage.setItem("notification", JSON.stringify(adminAlert));
+                } else if (response.user.pincode) {
+                    const pincodeAlert = await alertPincode({ pincode: response.user.pincode });
+                    localStorage.setItem("notification", JSON.stringify(pincodeAlert.data));
+                    const latestNotification = await fetchLatestNotification({pincode: response.user.pincode})
+                    localStorage.setItem("latestNotificationId", JSON.stringify(latestNotification._id.$oid))
+                }
+                window.location.href = "/user/home";
+            }
+        } catch (error) {
+            alert(error.message);
+        }
     }
+
   return (
     <div className='w-screen h-screen flex'>
         <div className='w-[50%] h-full flex justify-center items-center bg-[#2A2A2A]'>
@@ -55,15 +74,15 @@ function Login() {
                 </div>
                 <form 
                     action="/"
-                    onSubmit={login}
+                    onSubmit={loginUser}
                     className='flex flex-col gap-[10px]'>
                     <div className='flex px-[20px] justify-start items-center gap-2'>
                         <IoMail className='text-[25px]'/>
-                        <input type="email" id = "email" placeholder='Email' className='border-gray-200 w-full border-2 p-[10px] text-[20px]'/>
+                        <input type="email" id = "email" placeholder='Email' className='border-gray-200 w-full border-2 p-[10px] text-[20px]' required/>
                     </div>
                     <div className='flex px-[20px] justify-start items-center gap-2'>
                         <FaKey className='text-[25px]'/>
-                        <input type="password" id = "password" placeholder='Password' className='border-gray-200 w-full border-2 p-[10px] text-[20px]'/>
+                        <input type="password" id = "password" placeholder='Password' className='border-gray-200 w-full border-2 p-[10px] text-[20px]' required/>
                     </div>
                     <div className='flex justify-between mt-[10px]'>
                         <div className='px-[20px] flex gap-[10px] justify-start items-center'>

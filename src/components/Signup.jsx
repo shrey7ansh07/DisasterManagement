@@ -7,6 +7,7 @@ import { BsCalendarDateFill } from "react-icons/bs";
 
 import React from 'react'
 import { NavLink } from "react-router";
+import { register } from "../api/request";
 
 function Signup() {
 
@@ -20,10 +21,27 @@ function Signup() {
 
     async function signup(e){
         e.preventDefault();
-        const name = document.getElementById("name");
-        const email = document.getElementById("email");
-        const password = document.getElementById("password");
-        const confirmpassword = document.getElementById("confirmpassword");
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        const confirmpassword = document.getElementById("confirmpassword").value;
+
+        if(confirmpassword != password) {
+            alert("Password do not match")
+            return
+        }
+
+        try {
+            const response = await register({email, password, name})
+            if(response.status == "error"){
+                alert(response.message);
+                return;
+            }
+            alert("Successfully resgistered!! please login")
+        } catch (error) {
+            alert.log("Error while signing up", error)
+        }
+        
     }
   return (
     <div className='w-screen h-screen flex'>

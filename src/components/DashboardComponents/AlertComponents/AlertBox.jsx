@@ -4,18 +4,21 @@ import { PiWarningCircle } from "react-icons/pi";
 import { MdOutlineVerified } from "react-icons/md";
 
 function AlertBox({
+    id = 0,
     WarningName = "LandSlide",
     WarningInfo = "Heavy rainfall has triggered landslides near Ghoda Farm. Avoid affected zones and follow evacuation advisories.",
-    WarningLevel = 0,
+    WarningLevel = "High",
     Time = "13:12",
     Date = "29/01/2024"
 }) {
 
     const renderWarning = () => {
         switch (WarningLevel) {
-          case 2:
+          case "High":
             return (
-              <div className='h-[150px] border-1 border-[#2A2A2A] px-[20px] py-[10px] flex flex-col gap-4 relative rounded-2xl'>
+              <div 
+                id={id}
+                className='h-[150px] border-1 border-[#2A2A2A] px-[20px] py-[10px] flex flex-col gap-4 relative rounded-2xl'>
                 <div className="items-center justify-start flex gap-3">
                     <GoAlert className='text-[#DE3737] text-2xl'/>
                     <div className='text-2xl font-bold'>{WarningName}</div>
@@ -32,9 +35,11 @@ function AlertBox({
                 </button>
               </div>
             );
-          case 1:
+          case "Medium":
             return (
-                <div className='h-[150px] border-1 border-[#2A2A2A] px-[20px] py-[10px] flex flex-col gap-4 relative rounded-2xl'>
+                <div 
+                  id={id}
+                  className='h-[150px] border-1 border-[#2A2A2A] px-[20px] py-[10px] flex flex-col gap-4 relative rounded-2xl'>
                 <div className="items-center justify-start flex gap-3">
                     <PiWarningCircle className='text-yellow-400 text-2xl'/>
                     <div className='text-2xl font-bold'>{WarningName}</div>
@@ -51,9 +56,11 @@ function AlertBox({
                 </button>
               </div>
             );
-          case 0:
+          case "Low":
             return (
-                <div className='h-[150px] border-1 border-[#2A2A2A] px-[20px] py-[10px] flex flex-col gap-4 relative rounded-2xl'>
+                <div 
+                  id={id}
+                  className='h-[150px] border-1 border-[#2A2A2A] px-[20px] py-[10px] flex flex-col gap-4 relative rounded-2xl'>
                 <div className="items-center justify-start flex gap-3">
                     <MdOutlineVerified className='text-green-400 text-2xl'/>
                     <div className='text-2xl font-bold'>{WarningName}</div>
