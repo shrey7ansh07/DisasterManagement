@@ -55,11 +55,6 @@ function Login() {
                         <p className='text-[#DE3737] text-4xl font-extrabold'>AlertSys</p>
                     </div>
                 </div>
-                <div className='h-[4%] flex justify-center items-center gap-3 mb-[10px] mt-[10px]'>
-                    <div className='w-[40%] border-[#878484] border-[0.5px] h-[0.5px]'></div>
-                    <p className='text-center text-[15px]'>OR</p>
-                    <div className='w-[40%] border-[#878484]  border-[0.5px] h-[0.5px]'></div>
-                </div>
                 <form 
                     action="/"
                     onSubmit={loginUser}
