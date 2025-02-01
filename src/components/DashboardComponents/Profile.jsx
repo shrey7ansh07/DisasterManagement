@@ -3,7 +3,7 @@ import { updateUserInfo, updateLocation} from '../../api/request.js';
 import { alertPincode, fetchLatestNotification } from '../../api/request.js';
 
 function Profile() {
-    const imageUrl = "/src/assets/Frame.png"
+    const imageUrl = "/Frame.png"
 
 
     const [user, setUser] = useState(() => {

@@ -46,7 +46,7 @@ function Signup() {
   return (
     <div className='w-screen h-screen flex'>
         <div className='w-[50%] h-full flex justify-center items-center bg-[#2A2A2A]'>
-            <img src="/src/assets/Frame.png" alt="" className="w-[50%] aspect-auto" />
+            <img src="/Frame.png" alt="" className="w-[50%] aspect-auto" />
         </div>
         <div className='flex justify-center items-center w-[50%]'>
             <div className='border-[0.5px] border-[#2A2A2A] w-[80%] h-[80%] rounded-2xl p-[3%] flex flex-col gap-3'>
