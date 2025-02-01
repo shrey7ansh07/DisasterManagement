@@ -56,18 +56,6 @@ function Signup() {
                         <p className='text-[#DE3737] text-4xl font-extrabold'>AlertSys</p>
                     </div>
                 </div>
-                <button 
-                    className='h-[8%] flex justify-center items-center gap-2 cursor-pointer'
-                    onClick={googlesignup}>
-                    <FcGoogle className='text-3xl'/>
-                    <p>Signup with Google</p>
-                </button>
-                <button 
-                    className='h-[8%] flex justify-center items-center gap-2 cursor-pointer'
-                    onClick={facebooksignup}>
-                    <FaFacebookF className='text-3xl text-blue-400'/>
-                    <p>Signup with facebook</p>
-                </button>
                 <div className='h-[4%] flex justify-center items-center gap-3 mb-[10px] mt-[10px]'>
                     <div className='w-[40%] border-[#878484] border-[0.5px] h-[0.5px]'></div>
                     <p className='text-center text-[15px]'>OR</p>

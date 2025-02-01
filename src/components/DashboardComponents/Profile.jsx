@@ -86,7 +86,7 @@ function Profile() {
         <div className='flex gap-[2rem] justify-between'>
             <div className={boxStyle}>
                 <div className={boxInfoStyle}>
-                    Personel Information
+                    Personal Information
                 </div>
                 <form 
                     action=""

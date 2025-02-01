@@ -56,15 +56,6 @@ function Home() {
                 </div>
             </div>
         </div>
-        <div className='w-screen pt-[3rem] px-[3rem] flex flex-col gap-6 mb-10'>
-            <div className='flex justify-between items-center'>
-                <div className='text-[3rem] font-semibold'>
-                    Disaster Map
-                </div>
-            </div>
-            <div className='w-full h-[500px] border-1 border-black rounded-2xl'>
-            </div>
-        </div>
     </>
   )
 }
